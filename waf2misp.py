@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # source: https://blog.security-center.io/transform-your-passive-defense-into-active-defense-with-modsecurity-and-misp/
 
@@ -75,3 +75,4 @@ def main():
 
 if __name__ == "__main__":
      main()
+
