@@ -7,6 +7,9 @@ import urllib3, re, json, requests, time, sys, datetime, smtplib
 from pymisp import PyMISP
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Disable TLS warning
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -24,13 +27,13 @@ def convertToEpoch(date):
 # Push to Misp
 def pushtoMISP(ioc_value):
      # Variable: MISP URL, Cert, Key
-     misp_url = 'https://misp.security-center.io/'
+     misp_url = os.getenv("MISP_URL")
      misp_verifycert = False
-     misp_key = "**************************************"
+     misp_key = os.getenv("MISP_KEY")
 
 
      # MISP connection
-     misp = PyMISP(misp_url, misp_key, True, 'json')
+     misp = PyMISP(misp_url, misp_key, misp_verifycert, 'json')
 
      #date = "2018-02-28"
      i = datetime.now()
